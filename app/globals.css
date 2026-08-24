@@ -82,7 +82,8 @@ img { display: block; }
 
 .hero { position: relative; height: 663px; padding-top: 88px; overflow: hidden; }
 .hero--expanded { height: auto; min-height: 760px; }
-.hero__background { z-index: -3; object-fit: cover; object-position: center; }
+.responsive-picture { display: contents; }
+.hero__background { position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero__wash {
   position: absolute;
   z-index: -2;
@@ -303,7 +304,7 @@ img { display: block; }
 .feature-compliance__logo img { width: auto; max-width: 78px; height: auto; max-height: 63px; object-fit: contain; }
 
 .final-cta { position: relative; height: 701px; padding-top: 40px; overflow: hidden; }
-.final-cta__background { z-index: -2; top: -15.62% !important; bottom: auto !important; width: 100% !important; height: 136.95% !important; object-fit: fill; transform: scaleX(-1); }
+.final-cta__background { position: absolute; z-index: -2; top: -15.62%; right: 0; bottom: auto; left: 0; width: 100%; height: 136.95%; object-fit: fill; transform: scaleX(-1); }
 .final-cta__wash { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, #fff 8.118%, rgba(255,255,255,0) 56.574%); }
 .final-cta__content { display: flex; height: 561px; flex-direction: column; align-items: center; justify-content: center; gap: 48px; padding-block: 96px; }
 .final-cta__copy { width: 570px; text-align: center; }
@@ -386,16 +387,16 @@ img { display: block; }
 .motion-ready [data-reveal="cta-surface"].is-visible .final-cta__background { animation: cta-settle 1150ms var(--motion-ease-out) both; }
 
 @keyframes hero-settle {
-  from { transform: scale(1.055); filter: blur(5px) saturate(.9); }
-  to { transform: scale(1); filter: blur(0) saturate(1); }
+  from { opacity: .82; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
 }
 @keyframes hero-wash {
   from { opacity: .55; }
   to { opacity: 1; }
 }
 @keyframes cta-settle {
-  from { transform: scaleX(-1) scale(1.045); filter: blur(5px); }
-  to { transform: scaleX(-1) scale(1); filter: blur(0); }
+  from { opacity: .82; transform: scaleX(-1) scale(1.025); }
+  to { opacity: 1; transform: scaleX(-1) scale(1); }
 }
 
 .service-tab:active, .airport-pill:active, .search-value:active, .compact-select:active, .add-city:active, .search-button:active { scale: .97; }

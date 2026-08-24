@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { assetPath } from "@/lib/asset-path";
 import { AkeedLogo } from "./AkeedLogo";
+import { ResponsivePicture } from "./ResponsivePicture";
 
 const footerLinks = [
   ["About us", "https://flyakeed.com/aboutus.html"],
@@ -22,7 +23,16 @@ const socials = [
 export function FinalCta() {
   return (
     <section className="final-cta" data-reveal="cta-surface">
-      <Image className="final-cta__background" src={assetPath("/assets/cta-bg.png")} fill sizes="100vw" alt="" quality={100} />
+      <ResponsivePicture
+        baseName="cta"
+        widths={[640, 960, 1440, 1920]}
+        className="final-cta__background"
+        width={1920}
+        height={1280}
+        sizes="100vw"
+        loading="lazy"
+        alt=""
+      />
       <div className="final-cta__wash" aria-hidden="true" />
       <div className="final-cta__content page-shell">
         <div className="final-cta__copy" data-reveal="section-copy">

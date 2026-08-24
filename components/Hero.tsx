@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 import { assetPath } from "@/lib/asset-path";
+import { ResponsivePicture } from "./ResponsivePicture";
 
 const services = [
   { label: "Flight", icon: "/assets/tab-flight.svg" },
@@ -61,7 +62,17 @@ export function Hero() {
 
   return (
     <section className={`hero${routeCount > 1 ? " hero--expanded" : ""}`} aria-label="Book business travel">
-      <Image className="hero__background" src={assetPath("/assets/hero-layer-3.png")} fill priority sizes="100vw" alt="" quality={100} />
+      <ResponsivePicture
+        baseName="hero"
+        widths={[640, 960, 1440, 1920]}
+        className="hero__background"
+        width={3000}
+        height={1687}
+        sizes="100vw"
+        loading="eager"
+        fetchPriority="high"
+        alt=""
+      />
       <div className="hero__wash" aria-hidden="true" />
       <h1 className="sr-only">Book business travel with Akeed</h1>
 

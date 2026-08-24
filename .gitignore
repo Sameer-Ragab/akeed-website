@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.log
+.env*
+!.env.example
+public/assets/hero-layer-1.png
+public/assets/hero-layer-2.png

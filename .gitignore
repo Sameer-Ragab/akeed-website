@@ -3,6 +3,7 @@ node_modules/
 out/
 .DS_Store
 *.log
+*.tsbuildinfo
 .env*
 !.env.example
 public/assets/hero-layer-1.png

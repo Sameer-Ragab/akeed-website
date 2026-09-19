@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 import { assetPath } from "@/lib/asset-path";
-import { ResponsivePicture } from "./ResponsivePicture";
+import { HeroExperience } from "./HeroExperience";
 
 const services = [
   { label: "Flight", icon: "/assets/tab-flight.svg" },
@@ -62,18 +62,7 @@ export function Hero() {
 
   return (
     <section className={`hero${routeCount > 1 ? " hero--expanded" : ""}`} aria-label="Book business travel">
-      <ResponsivePicture
-        baseName="hero"
-        widths={[640, 960, 1440, 1920]}
-        className="hero__background"
-        width={3000}
-        height={1687}
-        sizes="100vw"
-        loading="eager"
-        fetchPriority="high"
-        alt=""
-      />
-      <div className="hero__wash" aria-hidden="true" />
+      <HeroExperience />
       <h1 className="sr-only">Book business travel with Akeed</h1>
 
       <div className="hero__content page-shell">

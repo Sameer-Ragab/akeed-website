@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 import { assetPath } from "@/lib/asset-path";
-import { HeroExperience } from "./HeroExperience";
+import FlyAkeedHero from "./fly-akeed/FlyAkeedHero";
 
 const services = [
   { label: "Flight", icon: "/assets/tab-flight.svg" },
@@ -61,8 +61,7 @@ export function Hero() {
   };
 
   return (
-    <section className={`hero${routeCount > 1 ? " hero--expanded" : ""}`} aria-label="Book business travel">
-      <HeroExperience />
+    <FlyAkeedHero className={`hero${routeCount > 1 ? " hero--expanded" : ""}`}>
       <h1 className="sr-only">Book business travel with Akeed</h1>
 
       <div className="hero__content page-shell">
@@ -156,6 +155,6 @@ export function Hero() {
           </form>
         </div>
       </div>
-    </section>
+    </FlyAkeedHero>
   );
 }

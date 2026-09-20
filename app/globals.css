@@ -80,7 +80,7 @@ img { display: block; }
 .brand__word { color: var(--deep-blue); font-size: var(--brand-word-size, 33px); font-weight: 800; line-height: .86; letter-spacing: .02em; }
 .brand--ink .brand__word { color: var(--ink); }
 
-.hero { position: relative; height: 663px; padding-top: 88px; overflow: hidden; isolation: isolate; }
+.hero { position: relative; height: 100vh; min-height: 100svh; height: 100svh; padding-top: 88px; overflow: hidden; isolation: isolate; }
 .hero--expanded { height: auto; min-height: 760px; }
 .responsive-picture { display: contents; }
 .hero-experience { position: absolute; z-index: 0; inset: 0; overflow: hidden; --hero-parallax-x: 0px; --hero-parallax-y: 0px; --hero-card-tilt-x: 0deg; --hero-card-tilt-y: 0deg; }

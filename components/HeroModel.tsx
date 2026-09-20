@@ -60,7 +60,7 @@ export function HeroModel({ interactionRoot }: HeroModelProps) {
       const render = () => {
         if (disposed) return;
         if (model && !reducedMotion.matches) {
-          model.rotation.y += ((-0.42 + pointerX * 0.12) - model.rotation.y) * 0.035;
+          model.rotation.y += (pointerX * 0.035 - model.rotation.y) * 0.035;
           model.rotation.x += ((pointerY * 0.035) - model.rotation.x) * 0.035;
           camera.position.x += (pointerX * 0.26 - camera.position.x) * 0.028;
           camera.position.y += (0.5 + pointerY * -0.16 - camera.position.y) * 0.028;
@@ -96,10 +96,10 @@ export function HeroModel({ interactionRoot }: HeroModelProps) {
           const bounds = new THREE.Box3().setFromObject(model);
           const size = bounds.getSize(new THREE.Vector3());
           const center = bounds.getCenter(new THREE.Vector3());
-          const scale = 5.9 / Math.max(size.x, size.y, size.z, 0.001);
+          const scale = 14 / Math.max(size.x, size.y, size.z, 0.001);
           model.scale.setScalar(scale);
           model.position.set(-center.x * scale, -center.y * scale - 0.8, -center.z * scale);
-          model.rotation.y = -0.42;
+          model.rotation.y = 0;
           model.traverse((object) => {
             object.castShadow = false;
             object.receiveShadow = false;

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { type PointerEvent, useCallback, useEffect, useRef, useState } from "react";
 import { assetPath } from "@/lib/asset-path";
+import { HeroModel } from "./HeroModel";
 import { ResponsivePicture } from "./ResponsivePicture";
 
 type DestinationId = "riyadh" | "jeddah" | "alula";
@@ -23,17 +24,23 @@ export function HeroExperience() {
   const [activeDestination, setActiveDestination] = useState<DestinationId | null>(null);
   const [airplaneActive, setAirplaneActive] = useState(false);
   const frame = useRef<number | null>(null);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef<DestinationId | null>(null);
   const airplaneRef = useRef(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const reduceMotionRef = useRef(false);
+
+  const clearScene = useCallback(() => {
+    activeRef.current = null;
+    airplaneRef.current = false;
+    setActiveDestination(null);
+    setAirplaneActive(false);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const syncMotionPreference = () => {
       reduceMotionRef.current = mediaQuery.matches;
-      if (mediaQuery.matches) videoRef.current?.pause();
-      else videoRef.current?.play().catch(() => undefined);
+      if (mediaQuery.matches) clearScene();
     };
     syncMotionPreference();
     mediaQuery.addEventListener("change", syncMotionPreference);
@@ -41,7 +48,7 @@ export function HeroExperience() {
       mediaQuery.removeEventListener("change", syncMotionPreference);
       if (frame.current) cancelAnimationFrame(frame.current);
     };
-  }, []);
+  }, [clearScene]);
 
   const updateScene = useCallback((event: PointerEvent<HTMLElement>) => {
     if (event.pointerType !== "mouse" || reduceMotionRef.current) return;
@@ -69,13 +76,6 @@ export function HeroExperience() {
     });
   }, []);
 
-  const clearScene = useCallback(() => {
-    activeRef.current = null;
-    airplaneRef.current = false;
-    setActiveDestination(null);
-    setAirplaneActive(false);
-  }, []);
-
   const toggleDestination = (id: DestinationId) => {
     const next = activeRef.current === id ? null : id;
     activeRef.current = next;
@@ -83,11 +83,9 @@ export function HeroExperience() {
   };
 
   return (
-    <div className={`hero-experience${activeDestination ? " hero-experience--destination-active" : ""}${airplaneActive ? " hero-experience--airplane-active" : ""}`} aria-label="Interactive destinations" onPointerMove={updateScene} onPointerLeave={clearScene}>
+    <div ref={sceneRef} className={`hero-experience${activeDestination ? " hero-experience--destination-active" : ""}${airplaneActive ? " hero-experience--airplane-active" : ""}`} aria-label="Interactive destinations" onPointerMove={updateScene} onPointerLeave={clearScene}>
       <ResponsivePicture baseName="hero" widths={[640, 960, 1440, 1920]} className="hero__poster" width={3000} height={1687} sizes="100vw" loading="eager" fetchPriority="high" alt="" />
-      <video ref={videoRef} className="hero__video" autoPlay loop muted playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
-        <source src={assetPath("/assets/fly-akeed-hero.mp4")} type="video/mp4" />
-      </video>
+      <HeroModel interactionRoot={sceneRef} />
       <div className="hero__wash" aria-hidden="true" />
       <div className="hero-experience__map" aria-hidden="true"><div className="hero-experience__trail" /><div className="hero-experience__airplane"><Image src={assetPath("/assets/route-plane.svg")} width={54} height={54} alt="" priority /></div></div>
       {destinations.map((destination) => {

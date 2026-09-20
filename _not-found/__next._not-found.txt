@@ -2,4 +2,4 @@
 2:I[61968,["/akeed-website/_next/static/chunks/3_adf42n81i6q.js","/akeed-website/_next/static/chunks/1xzrqtkple3um.js"],"default"]
 3:I[11410,["/akeed-website/_next/static/chunks/3_adf42n81i6q.js","/akeed-website/_next/static/chunks/1xzrqtkple3um.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"MflEDpNANQMYpdRv_ZdCA"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"xZooFeDp-zXGA1R6nPmxw"}

@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 /** Mount on a positioned empty element. Pointer input may come from a parent containing your search UI. */
 export async function mountHeroScene(container, { modelUrl = './assets/scene.glb', eventTarget = container, onState = () => {} } = {}) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0xb8eee9, 1);
   container.append(renderer.domElement);
